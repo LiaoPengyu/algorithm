@@ -1,9 +1,3 @@
-Source Code
-
-Problem: 2337		User: ariselpy
-Memory: 292K		Time: 32MS
-Language: C++		Result: Accepted
-Source Code
 #include <cstring>
 #include <string>
 #include <cstdio>
