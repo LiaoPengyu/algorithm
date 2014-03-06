@@ -50,31 +50,19 @@ class StackWithMin2 {
     Node *tmp = new Node(val);
     tmp->pare = p;
     tmp->lson = p->rson;
-    p->rson->pare = tmp;
+    if(p->rson!=NULL)
+      p->rson->pare = tmp;
     p->rson = tmp;
   }
   int pop() {
     Node *p = s;
     if(p->rson == NULL) return -1;
     while(p->rson!=NULL) p = p->rson;
-    p->pare->rson = NULL;
+    p->pare->rson = p->lson;
+    if(p->lson != NULL)
+      p->lson->pare = p->pare;
     int ret = p->val;
     delete p;
     return ret;
   }
 };
-
-int main() {
-  StackWithMin2 s;
-  for(int i=9; i>4; i--) {
-    s.push(i);
-    s.push(i);
-  }
-  for(int i=9; i>4; i--) {
-    printf("%d ", s.pop());
-    printf("%d\n", s.min());
-    printf("%d ", s.pop());
-    printf("%d\n", s.min());
-  }
-  return 0;
-}
